@@ -1,0 +1,169 @@
+@model ec.edu.monster.modelo.ConversionViewModel
+
+<div class="container py-4">
+    @if (!Model.IsAuthenticated)
+    {
+        <div class="login-shell row g-0">
+            <div class="col-lg-6 login-visual">
+                <img src="@Url.Content("~/Content/Images/monster.jpg")" alt="Conversion de unidades" />
+            </div>
+            <div class="col-lg-6 login-panel">
+                <div class="w-100 mx-auto" style="max-width: 360px;">
+                    <div class="login-card-title">
+                         <div class="h2 mb-2">CONVERSION DE UNIDADES</div>
+                    </div>
+
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Usuario, new { @class = "form-label fs-5" })
+                            @Html.TextBoxFor(model => model.Usuario, new { @class = "form-control login-form-control", autocomplete = "username" })
+                        </div>
+                        <div class="mb-4">
+                            @Html.LabelFor(model => model.Contrasena, new { @class = "form-label fs-5" })
+                            @Html.PasswordFor(model => model.Contrasena, new { @class = "form-control login-form-control", autocomplete = "current-password" })
+                        </div>
+
+                        if (!string.IsNullOrWhiteSpace(Model.LoginError))
+                        {
+                            <div class="alert alert-danger py-2">@Model.LoginError</div>
+                        }
+
+                        <div class="text-center pt-2">
+                            <button type="submit" class="btn btn-light login-action">Ingresar</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <div class="monster-page-title mb-1">Conversion de unidades</div>
+            </div>
+            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-outline-secondary">Cerrar sesion</button>
+            }
+        </div>
+
+        <div class="card monster-card border-0">
+            <div class="card-body p-4">
+                @using (Html.BeginForm("Convert", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                     <div class="mb-3 monster-form">
+                        @Html.LabelFor(model => model.Categoria, new { @class = "form-label" })
+                        @Html.DropDownListFor(model => model.Categoria, Model.CategoriaOptions, "-- Seleccionar --", new { @class = "form-control", id = "categoriaSelect" })
+                    </div>
+                     <div class="row g-3 monster-form">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Origen, new { @class = "form-label" })
+                            @Html.DropDownListFor(model => model.Origen, Model.OrigenOptions, "-- Seleccionar --", new { @class = "form-control", id = "origenSelect" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Destino, new { @class = "form-label" })
+                            @Html.DropDownListFor(model => model.Destino, Model.DestinoOptions, "-- Seleccionar --", new { @class = "form-control", id = "destinoSelect" })
+                        </div>
+                    </div>
+                     <div class="mt-3 mb-4 monster-form">
+                        @Html.LabelFor(model => model.Valor, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Valor, new { @class = "form-control", type = "number", step = "any", placeholder = "0" })
+                    </div>
+                     <button type="submit" class="btn monster-primary px-4">Convertir</button>
+                    <button type="button" id="clearBtn" class="btn btn-outline-secondary px-4 ms-2">Limpiar</button>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Mensaje))
+                {
+                    <div class="alert alert-info mt-4 mb-0">
+                        <div class="fw-semibold">Resultado</div>
+                        <div>@Model.Mensaje</div>
+                        @if (Model.Resultado.HasValue)
+                        {
+                            <div class="small text-muted mt-1">Valor calculado: @Model.Resultado.Value</div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                var unitsByCategory = {
+                    masa: ["kg", "g", "lb", "oz", "t"],
+                    longitud: ["m", "cm", "km", "in", "gt"],
+                    temperatura: ["C", "F", "K", "R"]
+                };
+
+                var categorySelect = document.getElementById("categoriaSelect");
+                var originSelect = document.getElementById("origenSelect");
+                var destinationSelect = document.getElementById("destinoSelect");
+
+                function rebuildUnits() {
+                    if (!categorySelect || !originSelect || !destinationSelect) {
+                        return;
+                    }
+
+                    var units = unitsByCategory[(categorySelect.value || "masa").toLowerCase()] || unitsByCategory.masa;
+                    var currentOrigin = originSelect.value;
+                    var currentDestination = destinationSelect.value;
+
+                    function fillSelect(select, previousValue) {
+                        select.options.length = 0;
+
+                        var placeholder = document.createElement("option");
+                        placeholder.value = "";
+                        placeholder.text = "-- Seleccionar --";
+                        select.add(placeholder);
+
+                        for (var i = 0; i < units.length; i++) {
+                            var option = document.createElement("option");
+                            option.value = units[i];
+                            option.text = units[i];
+                            if (units[i] === previousValue) {
+                                option.selected = true;
+                            }
+                            select.add(option);
+                        }
+
+                        if (!select.value && units.length > 0) {
+                            select.value = units[0];
+                        }
+                    }
+
+                    fillSelect(originSelect, currentOrigin);
+                    fillSelect(destinationSelect, currentDestination);
+
+                    if (originSelect.value === destinationSelect.value && units.length > 1) {
+                        destinationSelect.value = units[1];
+                    }
+                }
+
+                if (categorySelect) {
+                    categorySelect.addEventListener("change", rebuildUnits);
+                    rebuildUnits();
+                }
+
+                var clearBtn = document.getElementById('clearBtn');
+                if (clearBtn) {
+                    clearBtn.addEventListener('click', function () {
+                        if (!categorySelect) return;
+                        categorySelect.value = 'masa';
+                        rebuildUnits();
+
+                        // reset numeric input for Valor
+                        var valorInput = document.querySelector('input[name="Valor"]');
+                        if (valorInput) valorInput.value = '0';
+                    });
+                }
+            })();
+        </script>
+    }
+</div>
