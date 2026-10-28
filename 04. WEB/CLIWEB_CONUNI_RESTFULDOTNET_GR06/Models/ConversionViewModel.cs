@@ -4,14 +4,14 @@ namespace ec.edu.monster.modelo
 {
     public class ConversionViewModel : ConversionRequest
     {
-        public string Usuario { get; set; } = string.Empty;
-        public string Contrasena { get; set; } = string.Empty;
-        public string LoginError { get; set; } = string.Empty;
+        public string Usuario { get; set; }
+        public string Contrasena { get; set; }
+        public string LoginError { get; set; }
         public bool IsAuthenticated { get; set; }
 
         public double? Resultado { get; set; }
 
-        public string Mensaje { get; set; } = string.Empty;
+        public string Mensaje { get; set; }
 
         public SelectList CategoriaOptions { get; set; }
         public SelectList OrigenOptions { get; set; }
@@ -19,6 +19,10 @@ namespace ec.edu.monster.modelo
 
         public ConversionViewModel()
         {
+            Usuario = string.Empty;
+            Contrasena = string.Empty;
+            LoginError = string.Empty;
+            Mensaje = string.Empty;
             InitializeOptions();
         }
 
@@ -38,7 +42,7 @@ namespace ec.edu.monster.modelo
 
         private string[] GetUnitsForCategoria(string categoria)
         {
-            var cat = categoria?.ToLower() ?? "masa";
+            var cat = categoria == null ? "masa" : categoria.ToLower();
             if (cat == "masa") return new[] { "kg", "g", "lb", "oz", "t" };
             if (cat == "longitud") return new[] { "m", "cm", "km", "in", "gt" };
             if (cat == "temperatura") return new[] { "C", "F", "K", "R" };

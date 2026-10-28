@@ -16,7 +16,7 @@ namespace ec.edu.monster.servicio
             try
             {
                 var baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-                var url = $"{baseUrl?.TrimEnd('/')}/api/conversion";
+                var url = (baseUrl ?? string.Empty).TrimEnd('/') + "/api/conversion";
                 var json = JsonConvert.SerializeObject(request);
                 using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
                 using (var response = HttpClient.PostAsync(url, content).GetAwaiter().GetResult())

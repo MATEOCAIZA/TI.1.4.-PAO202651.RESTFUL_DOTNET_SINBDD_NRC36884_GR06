@@ -133,15 +133,24 @@ namespace CLIWEB_CONUNI_RESTFULDOTNET_GR06
 
         protected struct ObjectResponseResult<T>
         {
+            private readonly T objectField;
+            private readonly string textField;
+
             public ObjectResponseResult(T responseObject, string responseText)
             {
-                this.Object = responseObject;
-                this.Text = responseText;
+                objectField = responseObject;
+                textField = responseText;
             }
 
-            public T Object { get; }
+            public T Object
+            {
+                get { return objectField; }
+            }
 
-            public string Text { get; }
+            public string Text
+            {
+                get { return textField; }
+            }
         }
 
         public bool ReadResponseAsString { get; set; }

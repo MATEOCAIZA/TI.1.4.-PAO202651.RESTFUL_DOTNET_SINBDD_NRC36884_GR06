@@ -9,9 +9,14 @@ namespace ec.edu.monster.modelo
         public bool Exitoso { get; set; }
 
         [DataMember]
-        public string Mensaje { get; set; } = string.Empty;
+        public string Mensaje { get; set; }
 
         [DataMember]
         public double Resultado { get; set; }
+
+        public ConversionResponse()
+        {
+            Mensaje = string.Empty;
+        }
     }
 }
