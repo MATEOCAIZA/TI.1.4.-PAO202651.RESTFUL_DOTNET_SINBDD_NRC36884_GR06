@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:ec.edu.monster.vista"
+             x:Class="ec.edu.monster.vista.Pages.MainPage"
+             x:DataType="pageModels:MainPageModel"
+             BackgroundColor="#0E1630"
+             Title="Conversion de unidades">
+
+    <Grid>
+        <!-- ===== Login ===== -->
+        <ScrollView IsVisible="{Binding IsLoginVisible}">
+            <VerticalStackLayout Padding="20,24" Spacing="20" MaximumWidthRequest="480">
+
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 28" HeightRequest="230">
+                    <Grid>
+                        <Image Source="monster_door.jpg" Aspect="AspectFill" />
+                        <BoxView>
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#000E1630" Offset="0.35" />
+                                    <GradientStop Color="#EE0E1630" Offset="1" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                        <VerticalStackLayout VerticalOptions="End" Padding="20" Spacing="2">
+                            <Label Text="MONSTERS, INC." TextColor="#3BC4D6" FontSize="13" FontAttributes="Bold" CharacterSpacing="3" />
+                            <Label Text="Conversor de unidades" TextColor="White" FontSize="26" FontAttributes="Bold" />
+                            <Label Text="Cliente movil · REST .NET" TextColor="#B8C4E0" FontSize="13" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#18213F" Stroke="#2A3760" StrokeThickness="1" StrokeShape="RoundRectangle 24" Padding="24">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Iniciar sesion" FontSize="24" FontAttributes="Bold" TextColor="White" />
+                        <Label Text="Ingresa con tu credencial de asustador" FontSize="13" TextColor="#8E9BC2" Margin="0,0,0,6" />
+
+                        <Label Text="Usuario" FontSize="13" TextColor="#B8C4E0" />
+                        <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,2">
+                            <Entry Text="{Binding Usuario}" Placeholder="Ingresa tu usuario" PlaceholderColor="#56628A" TextColor="White" HeightRequest="46" ClearButtonVisibility="WhileEditing" />
+                        </Border>
+
+                        <Label Text="Contraseña" FontSize="13" TextColor="#B8C4E0" />
+                        <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,2">
+                            <Entry Text="{Binding Contrasena}" IsPassword="True" Placeholder="••••••••" PlaceholderColor="#56628A" TextColor="White" HeightRequest="46" />
+                        </Border>
+
+                        <Label Text="{Binding LoginError}" TextColor="#FF6B81" HorizontalTextAlignment="Center" FontSize="13" />
+
+                        <Button Text="Ingresar"
+                                Command="{Binding LoginCommand}"
+                                HeightRequest="52"
+                                BackgroundColor="#3BC4D6"
+                                TextColor="#0E1630"
+                                CornerRadius="16"
+                                FontSize="16"
+                                FontAttributes="Bold" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ===== Conversor ===== -->
+        <ScrollView IsVisible="{Binding IsConverterVisible}">
+            <VerticalStackLayout Padding="20,24" Spacing="16" MaximumWidthRequest="480">
+
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 24" HeightRequest="150">
+                    <Grid>
+                        <Image Source="monster_door.jpg" Aspect="AspectFill" />
+                        <BoxView Color="#990E1630" />
+                        <VerticalStackLayout VerticalOptions="Center" Padding="20" Spacing="2">
+                            <Label Text="Bienvenido, MONSTER" TextColor="#3BC4D6" FontSize="13" FontAttributes="Bold" />
+                            <Label Text="Conversion de unidades" TextColor="White" FontSize="24" FontAttributes="Bold" />
+                            <Label Text="Masa, longitud y temperatura" TextColor="#B8C4E0" FontSize="13" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#18213F" Stroke="#2A3760" StrokeThickness="1" StrokeShape="RoundRectangle 24" Padding="20">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Categoria" FontSize="13" TextColor="#B8C4E0" />
+                        <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,0">
+                            <Picker ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" TextColor="White" TitleColor="#8E9BC2" />
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="Origen" FontSize="13" TextColor="#B8C4E0" />
+                                <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,0">
+                                    <Picker ItemsSource="{Binding OriginUnits}" SelectedItem="{Binding SelectedOrigin}" TextColor="White" />
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="Destino" FontSize="13" TextColor="#B8C4E0" />
+                                <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,0">
+                                    <Picker ItemsSource="{Binding DestinationUnits}" SelectedItem="{Binding SelectedDestination}" TextColor="White" />
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Label Text="Valor" FontSize="13" TextColor="#B8C4E0" />
+                        <Border Stroke="#2F3D6B" StrokeShape="RoundRectangle 14" BackgroundColor="#0E1630" Padding="12,2">
+                            <Entry Text="{Binding ValueText}" Keyboard="Numeric" Placeholder="0" PlaceholderColor="#56628A" TextColor="White" HeightRequest="46" />
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                            <Button Text="Limpiar" Command="{Binding ClearCommand}" BackgroundColor="#2A3760" TextColor="White" CornerRadius="16" HeightRequest="50" FontAttributes="Bold" />
+                            <Button Grid.Column="1" Text="Convertir" Command="{Binding ConvertCommand}" BackgroundColor="#3BC4D6" TextColor="#0E1630" CornerRadius="16" HeightRequest="50" FontAttributes="Bold" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#7B5CFF" StrokeThickness="0" StrokeShape="RoundRectangle 24" Padding="20">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Resultado" FontSize="13" TextColor="#E2DBFF" FontAttributes="Bold" />
+                        <Label Text="{Binding Result}" FontSize="18" TextColor="White" FontAttributes="Bold" LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button Text="Cerrar sesion" Command="{Binding LogoutCommand}" BackgroundColor="Transparent" BorderColor="#FF6B81" BorderWidth="1.5" TextColor="#FF6B81" CornerRadius="16" HeightRequest="48" FontAttributes="Bold" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
