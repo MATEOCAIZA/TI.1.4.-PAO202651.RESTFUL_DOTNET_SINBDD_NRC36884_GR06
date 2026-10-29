@@ -44,7 +44,7 @@ namespace ec.edu.monster.modelo
         {
             var cat = categoria == null ? "masa" : categoria.ToLower();
             if (cat == "masa") return new[] { "kg", "g", "lb", "oz", "t" };
-            if (cat == "longitud") return new[] { "m", "cm", "km", "in", "gt" };
+            if (cat == "longitud") return new[] { "m", "cm", "km", "in", "ft" };
             if (cat == "temperatura") return new[] { "C", "F", "K", "R" };
             return new[] { "kg", "g", "lb", "oz", "t" };
         }

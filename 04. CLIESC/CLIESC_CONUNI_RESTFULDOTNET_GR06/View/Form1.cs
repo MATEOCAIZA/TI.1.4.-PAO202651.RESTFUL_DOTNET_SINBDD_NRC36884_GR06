@@ -381,7 +381,7 @@ namespace ec.edu.monster.vista
             _contentPanel.Visible = true;
             _contentPanel.BringToFront();
             AcceptButton = _convertButton;
-            Text = "Conversor de Unidades";
+            Text = "RESTFUL .NET - Conversor de Unidades";
         }
 
         public void MostrarMensajeLogin(string mensaje, bool esError)

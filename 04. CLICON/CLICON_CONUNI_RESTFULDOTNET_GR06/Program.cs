@@ -83,7 +83,7 @@ namespace ec.edu.monster.vista
                 string[] unidades;
                 if (categoria == "longitud")
                 {
-                    unidades = new[] { "m", "cm", "km", "in", "gt" };
+                    unidades = new[] { "m", "cm", "km", "in", "ft" };
                 }
                 else if (categoria == "temperatura")
                 {

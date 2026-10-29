@@ -10,7 +10,7 @@ namespace ec.edu.monster.modelo
         public static readonly Dictionary<string, string[]> UnidadesPorCategoria = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
         {
             { "masa", new[] { "kg", "g", "lb", "oz", "t" } },
-            { "longitud", new[] { "m", "cm", "km", "in", "gt" } },
+            { "longitud", new[] { "m", "cm", "km", "in", "ft" } },
             { "temperatura", new[] { "C", "F", "K", "R" } }
         };
 

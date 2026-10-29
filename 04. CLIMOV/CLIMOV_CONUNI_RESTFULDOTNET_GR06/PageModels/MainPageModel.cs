@@ -75,7 +75,7 @@ namespace ec.edu.monster.vista
             string[] units;
             if (SelectedCategory == "longitud")
             {
-                units = new[] { "m", "cm", "km", "in", "gt" };
+                units = new[] { "m", "cm", "km", "in", "ft" };
             }
             else if (SelectedCategory == "temperatura")
             {

@@ -22,7 +22,7 @@ namespace ec.edu.monster.servicio
             ["cm"] = 0.01d,
             ["km"] = 1000d,
             ["in"] = 0.0254d,
-            ["gt"] = 0.3048d
+            ["ft"] = 0.3048d
         };
 
         public ConversionResponse Convert(ConversionRequest request)
