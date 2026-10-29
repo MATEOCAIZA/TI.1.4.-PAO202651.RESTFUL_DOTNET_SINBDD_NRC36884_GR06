@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8058AD51-F0EE-4514-A0A8-6CC19FE0DDBA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CLIESC_CONUNI_RESTFULDOTNET_GR01</RootNamespace>
-    <AssemblyName>CLIESC_CONUNI_RESTFULDOTNET_GR01</AssemblyName>
+    <RootNamespace>CLIESC_CONUNI_RESTFULDOTNET_GR06</RootNamespace>
+    <AssemblyName>CLIESC_CONUNI_RESTFULDOTNET_GR06</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

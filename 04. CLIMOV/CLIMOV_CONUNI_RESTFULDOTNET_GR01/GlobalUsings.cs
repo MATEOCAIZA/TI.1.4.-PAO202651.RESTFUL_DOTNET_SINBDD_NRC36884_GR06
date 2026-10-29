@@ -1,6 +1,0 @@
-global using CLIMOV_CONUNI_RESTFULDOTNET_GR01.Data;
-global using CLIMOV_CONUNI_RESTFULDOTNET_GR01.PageModels;
-global using CLIMOV_CONUNI_RESTFULDOTNET_GR01.Pages;
-global using CLIMOV_CONUNI_RESTFULDOTNET_GR01.Services;
-global using CLIMOV_CONUNI_RESTFULDOTNET_GR01.Utilities;
-global using Fonts;

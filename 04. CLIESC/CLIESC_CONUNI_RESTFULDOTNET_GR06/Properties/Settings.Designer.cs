@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CLIESC_CONUNI_RESTFULDOTNET_GR01.Properties
+namespace CLIESC_CONUNI_RESTFULDOTNET_GR06.Properties
 {
 
 

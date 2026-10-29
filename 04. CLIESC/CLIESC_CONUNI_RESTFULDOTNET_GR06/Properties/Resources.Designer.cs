@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CLIESC_CONUNI_RESTFULDOTNET_GR01.Properties
+namespace CLIESC_CONUNI_RESTFULDOTNET_GR06.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace CLIESC_CONUNI_RESTFULDOTNET_GR01.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CLIESC_CONUNI_RESTFULDOTNET_GR01.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CLIESC_CONUNI_RESTFULDOTNET_GR06.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

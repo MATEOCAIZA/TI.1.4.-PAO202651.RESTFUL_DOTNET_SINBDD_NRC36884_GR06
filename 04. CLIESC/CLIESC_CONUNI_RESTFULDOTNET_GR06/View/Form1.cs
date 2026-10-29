@@ -70,7 +70,7 @@ namespace ec.edu.monster.vista
 
         private void BuildLayout()
         {
-            Text = "Monster App - Conversor de Unidades";
+            Text = "RESTFUL .NET - Conversor de Unidades";
             StartPosition = FormStartPosition.CenterScreen;
             ClientSize = new Size(980, 560);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -368,7 +368,7 @@ namespace ec.edu.monster.vista
             _loginRootPanel.Visible = true;
             _contentPanel.Visible = false;
             AcceptButton = _loginButton;
-            Text = "Iniciar sesión - Monster App";
+            Text = "RESTFUL .NET - Iniciar sesión";
             _usuarioTextBox.Clear();
             _contrasenaTextBox.Clear();
             _loginMessageLabel.Text = "";

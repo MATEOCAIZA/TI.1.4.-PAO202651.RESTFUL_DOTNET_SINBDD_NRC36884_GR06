@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada a un ensamblado.
-[assembly: AssemblyTitle("CLICON_CONUNI_RESTFULDOTNET_GR01")]
+[assembly: AssemblyTitle("CLICON_CONUNI_RESTFULDOTNET_GR06")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CLICON_CONUNI_RESTFULDOTNET_GR01")]
+[assembly: AssemblyProduct("CLICON_CONUNI_RESTFULDOTNET_GR06")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

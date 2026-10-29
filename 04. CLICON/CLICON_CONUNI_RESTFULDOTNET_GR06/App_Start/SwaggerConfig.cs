@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using CLICON_CONUNI_RESTFULDOTNET_GR01;
+using CLICON_CONUNI_RESTFULDOTNET_GR06;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace CLICON_CONUNI_RESTFULDOTNET_GR01
+namespace CLICON_CONUNI_RESTFULDOTNET_GR06
 {
     public class SwaggerConfig
     {
@@ -32,7 +32,7 @@ namespace CLICON_CONUNI_RESTFULDOTNET_GR01
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "CLICON_CONUNI_RESTFULDOTNET_GR01");
+                        c.SingleApiVersion("v1", "CLICON_CONUNI_RESTFULDOTNET_GR06");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //

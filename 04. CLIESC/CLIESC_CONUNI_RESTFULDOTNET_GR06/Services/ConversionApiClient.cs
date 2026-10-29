@@ -16,12 +16,12 @@ namespace ec.edu.monster.servicio
             {
                 var baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
 
-                var generatedClient = new CLIESC_CONUNI_RESTFULDOTNET_GR01.ConversionClient(HttpClient)
+                var generatedClient = new CLIESC_CONUNI_RESTFULDOTNET_GR06.ConversionClient(HttpClient)
                 {
                     BaseUrl = baseUrl
                 };
 
-                var generatedRequest = new CLIESC_CONUNI_RESTFULDOTNET_GR01.ConversionRequest
+                var generatedRequest = new CLIESC_CONUNI_RESTFULDOTNET_GR06.ConversionRequest
                 {
                     Categoria = request.Categoria,
                     Origen = request.Origen,

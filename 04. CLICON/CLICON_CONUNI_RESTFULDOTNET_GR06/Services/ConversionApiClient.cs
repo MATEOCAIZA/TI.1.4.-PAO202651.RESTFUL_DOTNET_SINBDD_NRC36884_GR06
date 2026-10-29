@@ -15,12 +15,12 @@ namespace ec.edu.monster.servicio
             try
             {
                 var baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-                var generatedClient = new CLICON_CONUNI_RESTFULDOTNET_GR01.ConversionClient(HttpClient)
+                var generatedClient = new CLICON_CONUNI_RESTFULDOTNET_GR06.ConversionClient(HttpClient)
                 {
                     BaseUrl = baseUrl
                 };
 
-                var generatedRequest = new CLICON_CONUNI_RESTFULDOTNET_GR01.ConversionRequest
+                var generatedRequest = new CLICON_CONUNI_RESTFULDOTNET_GR06.ConversionRequest
                 {
                     Categoria = request.Categoria,
                     Origen = request.Origen,

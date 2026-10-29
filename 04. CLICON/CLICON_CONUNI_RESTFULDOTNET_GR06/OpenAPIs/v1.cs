@@ -13,7 +13,7 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace CLICON_CONUNI_RESTFULDOTNET_GR01
+namespace CLICON_CONUNI_RESTFULDOTNET_GR06
 {
     using System = global::System;
 
