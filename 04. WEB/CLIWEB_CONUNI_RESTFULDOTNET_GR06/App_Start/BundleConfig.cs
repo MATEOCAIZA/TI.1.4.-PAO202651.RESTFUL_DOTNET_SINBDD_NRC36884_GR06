@@ -23,8 +23,7 @@ namespace CLIWEB_CONUNI_RESTFULDOTNET_GR06
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.css"));
         }
     }
 }

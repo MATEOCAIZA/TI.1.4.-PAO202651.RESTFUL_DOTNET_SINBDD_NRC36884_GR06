@@ -1,16 +1,16 @@
 @model ec.edu.monster.modelo.ConversionViewModel
 
-<div class="container py-4">
+<div class="page-container @(Model.IsAuthenticated ? "conversion-page" : "login-page")">
     @if (!Model.IsAuthenticated)
     {
-        <div class="login-shell row g-0">
-            <div class="col-lg-6 login-visual">
+        <div class="login-shell">
+            <div class="login-visual">
                 <img src="@Url.Content("~/Content/Images/monster.jpg")" alt="Conversion de unidades" />
             </div>
-            <div class="col-lg-6 login-panel">
-                <div class="w-100 mx-auto" style="max-width: 360px;">
+            <div class="login-panel">
+                <div class="login-content">
                     <div class="login-card-title">
-                         <div class="h2 mb-2">CONVERSION DE UNIDADES</div>
+                         <div class="h2 mb-2">BIENVENIDO</div>
                     </div>
 
                     @using (Html.BeginForm("Login", "Home", FormMethod.Post))
@@ -18,11 +18,11 @@
                         @Html.AntiForgeryToken()
 
                         <div class="mb-3">
-                            @Html.LabelFor(model => model.Usuario, new { @class = "form-label fs-5" })
+                             @Html.LabelFor(model => model.Usuario, new { @class = "form-label" })
                             @Html.TextBoxFor(model => model.Usuario, new { @class = "form-control login-form-control", autocomplete = "username" })
                         </div>
                         <div class="mb-4">
-                            @Html.LabelFor(model => model.Contrasena, new { @class = "form-label fs-5" })
+                             @Html.LabelFor(model => model.Contrasena, new { @class = "form-label" })
                             @Html.PasswordFor(model => model.Contrasena, new { @class = "form-control login-form-control", autocomplete = "current-password" })
                         </div>
 
@@ -31,8 +31,8 @@
                             <div class="alert alert-danger py-2">@Model.LoginError</div>
                         }
 
-                        <div class="text-center pt-2">
-                            <button type="submit" class="btn btn-light login-action">Ingresar</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn login-action">Ingresar</button>
                         </div>
                     }
                 </div>
@@ -41,7 +41,7 @@
     }
     else
     {
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="conversion-heading">
             <div>
                 <div class="monster-page-title mb-1">Conversion de unidades</div>
             </div>
@@ -52,17 +52,21 @@
             }
         </div>
 
-        <div class="card monster-card border-0">
-            <div class="card-body p-4">
+        <div class="conversion-card">
+            <div class="conversion-card-body">
                 @using (Html.BeginForm("Convert", "Home", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
-                     <div class="mb-3 monster-form">
+                     <div class="conversion-field">
                         @Html.LabelFor(model => model.Categoria, new { @class = "form-label" })
                         @Html.DropDownListFor(model => model.Categoria, Model.CategoriaOptions, "-- Seleccionar --", new { @class = "form-control", id = "categoriaSelect" })
                     </div>
-                     <div class="row g-3 monster-form">
+                     <div class="conversion-field">
+                         @Html.LabelFor(model => model.Valor, new { @class = "form-label" })
+                         @Html.TextBoxFor(model => model.Valor, new { @class = "form-control", type = "number", step = "any" })
+                     </div>
+                     <div class="row conversion-units">
                         <div class="col-md-6">
                             @Html.LabelFor(model => model.Origen, new { @class = "form-label" })
                             @Html.DropDownListFor(model => model.Origen, Model.OrigenOptions, "-- Seleccionar --", new { @class = "form-control", id = "origenSelect" })
@@ -72,18 +76,16 @@
                             @Html.DropDownListFor(model => model.Destino, Model.DestinoOptions, "-- Seleccionar --", new { @class = "form-control", id = "destinoSelect" })
                         </div>
                     </div>
-                     <div class="mt-3 mb-4 monster-form">
-                        @Html.LabelFor(model => model.Valor, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Valor, new { @class = "form-control", type = "number", step = "any", placeholder = "0" })
-                    </div>
-                     <button type="submit" class="btn monster-primary px-4">Convertir</button>
-                    <button type="button" id="clearBtn" class="btn btn-outline-secondary px-4 ms-2">Limpiar</button>
+                     <div class="conversion-actions">
+                         <button type="submit" class="btn monster-primary">Convertir</button>
+                         <button type="button" id="clearBtn" class="btn clear-action">Limpiar</button>
+                     </div>
                 }
 
                 @if (!string.IsNullOrWhiteSpace(Model.Mensaje))
                 {
-                    <div class="alert alert-info mt-4 mb-0">
-                        <div class="fw-semibold">Resultado</div>
+                    <div class="conversion-result">
+                        <div class="fw-semibold">Resultado:</div>
                         <div>@Model.Mensaje</div>
                         @if (Model.Resultado.HasValue)
                         {
